@@ -1,5 +1,5 @@
 
-# 1 "main.c"
+# 1 "keypad.c"
 
 # 26 "/opt/microchip/xc8/v1.34/include/htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -5390,169 +5390,33 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 8 "/opt/microchip/xc8/v1.34/include/stdio.h"
-typedef int ptrdiff_t;
-typedef unsigned size_t;
-typedef unsigned short wchar_t;
-
-# 7 "/opt/microchip/xc8/v1.34/include/stdarg.h"
-typedef void * va_list[1];
-
-#pragma intrinsic(__va_start)
-extern void * __va_start(void);
-
-#pragma intrinsic(__va_arg)
-extern void * __va_arg(void *, ...);
-
-# 24 "/opt/microchip/xc8/v1.34/include/stdio.h"
-extern int errno;
-
-# 55
-struct __prbuf
-{
-char * ptr;
-void (* func)(char);
-};
-
-# 17 "/opt/microchip/xc8/v1.34/include/conio.h"
-extern int errno;
-
-
-extern void init_uart(void);
-
-extern char getch(void);
-extern char getche(void);
-extern void putch(char);
-extern void ungetch(char);
-
-extern __bit kbhit(void);
-
-# 31
-extern char * cgets(char *);
-extern void cputs(const char *);
-
-# 100 "/opt/microchip/xc8/v1.34/include/stdio.h"
-extern int cprintf(char *, ...);
-#pragma printf_check(cprintf)
-
-
-
-extern int _doprnt(struct __prbuf *, const register char *, register va_list);
-
-
-# 192
-#pragma printf_check(vprintf) const
-#pragma printf_check(vsprintf) const
-
-extern char * gets(char *);
-extern int puts(const char *);
-extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
-extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
-extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
-extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
-extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
-extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
-
-#pragma printf_check(printf) const
-#pragma printf_check(sprintf) const
-extern int sprintf(char *, const char *, ...);
-extern int printf(const char *, ...);
-
-# 6 "lcd.h"
-void initLCD(void);
-void lcdCommand(unsigned char cmd);
-void lcdData(unsigned char data);
-void lcdPrint(const char* str);
-
 # 6 "keypad.h"
 void initKeypad(void);
 char readKeypad(void);
 
+# 4 "keypad.c"
+void initKeypad(void) {
+TRISC = 0xF0;
+PORTC = 0x00;
+}
 
-# 7 "main.c"
-#pragma config FOSC = HS
-#pragma config PWRT = ON
-#pragma config BOR = ON
-#pragma config BORV = 3
-#pragma config WDT = OFF
-#pragma config MCLRE = ON
-#pragma config PBADEN = OFF
-#pragma config LVP = OFF
-#pragma config XINST = OFF
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
-#pragma config CPB = OFF
-#pragma config CPD = OFF
+char readKeypad(void) {
+const char keymap[4][4] = {
+{'1', '2', '3', 'A'},
+{'4', '5', '6', 'B'},
+{'7', '8', '9', 'C'},
+{'*', '0', '#', 'D'}
+};
 
-# 30
-void initMotor(void);
-void moveMotor(int steps, int direction);
-void initUART(void);
-void sendUART(const char* data);
+for (int col = 0; col < 4; col++) {
+LATC = ~(1 << col);
+_delay((unsigned long)((10)*(20000000/4000.0)));
 
-
-void main(void) {
-
-initLCD();
-initKeypad();
-initMotor();
-initUART();
-
-lcdPrint("Elevator Ready");
-
-while (1) {
-char key = readKeypad();
-
-if (key != '\0') {
-lcdCommand(0x01);
-lcdPrint("Nivel: ");
-lcdData(key);
-
-
-char msg[16];
-sprintf(msg, "Nivel: %c\n", key);
-sendUART(msg);
-
-
-int level = key - '0';
-moveMotor(level * 100, 1);
+for (int row = 0; row < 4; row++) {
+if (!(PORTC & (1 << (row + 4)))) {
+return keymap[row][col];
 }
 }
 }
-
-
-void initMotor(void) {
-TRISBbits.TRISB0 = 0;
-TRISBbits.TRISB1 = 0;
-}
-
-void moveMotor(int steps, int direction) {
-LATB1 = direction;
-for (int i = 0; i < steps; i++) {
-LATB0 = 1;
-_delay((unsigned long)((1)*(20000000/4000.0)));
-LATB0 = 0;
-_delay((unsigned long)((1)*(20000000/4000.0)));
-}
-}
-
-
-void initUART(void) {
-TRISCbits.TRISC6 = 1;
-TRISCbits.TRISC7 = 1;
-SPBRG = 129;
-TXSTAbits.BRGH = 1;
-TXSTAbits.SYNC = 0;
-RCSTAbits.SPEN = 1;
-TXSTAbits.TXEN = 1;
-RCSTAbits.CREN = 1;
-}
-
-void sendUART(const char* data) {
-while (*data) {
-while (!TXSTAbits.TRMT);
-TXREG = *data++;
-}
+return '\0';
 }

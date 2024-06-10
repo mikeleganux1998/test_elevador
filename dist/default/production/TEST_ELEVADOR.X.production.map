@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=/opt/microchip/xc8/v1.34/dat/en_msgs.txt -cs \
   -h+dist/default/production/TEST_ELEVADOR.X.production.sym \
   --cmf=dist/default/production/TEST_ELEVADOR.X.production.cmf -z -Q18F4550 \
-  -o/tmp/cgtNukarz -Mdist/default/production/TEST_ELEVADOR.X.production.map \
+  -o/tmp/cgtMFozuN -Mdist/default/production/TEST_ELEVADOR.X.production.map \
   -E1 -ver=XC8 -ASTACK=060h-07ffh -pstack=STACK -ACODE=00h-07FFFh \
   -ACONST=00h-07FFFh -ASMALLCONST=0800h-08FFhx120 \
   -AMEDIUMCONST=0800h-07FFFh -ACOMRAM=01h-05Fh -AABS1=00h-07FFh \
@@ -22,7 +22,7 @@ Linker command line:
   -pfarbss=FARRAM,fardata=FARRAM,nvFARRAM=FARRAM \
   -pintsave_regs=BIGRAM,bigbss=BIGRAM,bigdata=BIGRAM -pbss=RAM \
   -pidata=CODE,irdata=CODE,ibigdata=CODE,ifardata=CODE -prparam=COMRAM \
-  /tmp/cgtzGZfgg.obj dist/default/production/TEST_ELEVADOR.X.production.obj 
+  /tmp/cgtgDCC3I.obj dist/default/production/TEST_ELEVADOR.X.production.obj 
 
 Object code version is 3.11
 
@@ -34,7 +34,7 @@ Call graph: (short form)
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-/tmp/cgtzGZfgg.obj
+/tmp/cgtgDCC3I.obj
                 end_init                              0        0        4        0       0
                 idloc                            200000   200000        8   200000       0
                 config                           300000   300000        E   300000       0
@@ -365,7 +365,7 @@ __end_of_moveMotor       text4        000C6E
 __end_of_readKeypad      text3        00091A
 __end_of_sendUART        text2        000CF6
 __end_of_sprintf         text1        000C1C
-__end_ofreadKeypad@F4542 smallconst   000811
+__end_ofreadKeypad@F4443 smallconst   000811
 __initialization         cinit        000D32
 __mediumconst            mediumconst  000000
 __pcinit                 cinit        000D32
@@ -425,7 +425,7 @@ main@msg                 cstackCOMRAM 000019
 moveMotor@direction      cstackCOMRAM 000009
 moveMotor@i              cstackCOMRAM 00000C
 moveMotor@steps          cstackCOMRAM 000007
-readKeypad@F4542         smallconst   000801
+readKeypad@F4443         smallconst   000801
 readKeypad@col           cstackCOMRAM 000015
 readKeypad@keymap        cstackCOMRAM 000005
 readKeypad@row           cstackCOMRAM 000017
@@ -445,7 +445,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 47 in file "main.c"
+		line 36 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -527,9 +527,9 @@ Total ram usage:       10 bytes
 
  *************** function _sendUART *****************
  Defined at:
-		line 189 in file "main.c"
+		line 93 in file "main.c"
  Parameters:    Size  Location     Type
-  data            2    0[COMRAM] PTR unsigned char 
+  data            2    0[COMRAM] PTR const unsigned char 
 		 -> main@msg(16), 
  Auto vars:     Size  Location     Type
 		None
@@ -557,7 +557,7 @@ Total ram usage:        2 bytes
 
  *************** function _readKeypad *****************
  Defined at:
-		line 140 in file "main.c"
+		line 9 in file "keypad.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -588,7 +588,7 @@ Total ram usage:       24 bytes
 
  *************** function _moveMotor *****************
  Defined at:
-		line 167 in file "main.c"
+		line 71 in file "main.c"
  Parameters:    Size  Location     Type
   steps           2    6[COMRAM] int 
   direction       2    8[COMRAM] int 
@@ -618,7 +618,7 @@ Total ram usage:        7 bytes
 
  *************** function _lcdPrint *****************
  Defined at:
-		line 128 in file "main.c"
+		line 65 in file "lcd.c"
  Parameters:    Size  Location     Type
   str             2    3[COMRAM] PTR const unsigned char 
 		 -> STR_2(8), STR_1(15), 
@@ -649,7 +649,7 @@ Total ram usage:        2 bytes
 
  *************** function _lcdData *****************
  Defined at:
-		line 108 in file "main.c"
+		line 45 in file "lcd.c"
  Parameters:    Size  Location     Type
   data            1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -679,7 +679,7 @@ Total ram usage:        3 bytes
 
  *************** function _initUART *****************
  Defined at:
-		line 178 in file "main.c"
+		line 82 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -708,7 +708,7 @@ Total ram usage:        0 bytes
 
  *************** function _initMotor *****************
  Defined at:
-		line 162 in file "main.c"
+		line 66 in file "main.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -737,7 +737,7 @@ Total ram usage:        0 bytes
 
  *************** function _initLCD *****************
  Defined at:
-		line 77 in file "main.c"
+		line 14 in file "lcd.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -767,7 +767,7 @@ Total ram usage:        1 bytes
 
  *************** function _lcdCommand *****************
  Defined at:
-		line 88 in file "main.c"
+		line 25 in file "lcd.c"
  Parameters:    Size  Location     Type
   cmd             1    wreg     unsigned char 
  Auto vars:     Size  Location     Type
@@ -797,7 +797,7 @@ Total ram usage:        3 bytes
 
  *************** function _initKeypad *****************
  Defined at:
-		line 135 in file "main.c"
+		line 4 in file "keypad.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -858,6 +858,12 @@ Total ram usage:        6 bytes
 MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
+keypad.c
+		_readKeypad    		CODE           	0834	0000	231
+		_initKeypad    		CODE           	0D3C	0000	11
+
+keypad.c estimated size: 242
+
 /opt/microchip/xc8/v1.34/sources/common/doprnt.c
 		_sprintf       		CODE           	0B84	0000	153
 
@@ -869,23 +875,25 @@ Module		Function		Class		Link	Load	Size
 /opt/microchip/xc8/v1.34/sources/common/Umul16.c estimated size: 41
 
 shared
-		readKeypad@F454		SMALLCONST     	0801	0000	17
+		readKeypad@F444		SMALLCONST     	0801	0000	17
 		__initializatio		CODE           	0D32	0000	1
 
 shared estimated size: 18
 
-main.c
+lcd.c
 		_lcdCommand    		CODE           	09FE	0000	229
-		_readKeypad    		CODE           	0834	0000	231
+		_lcdData       		CODE           	091A	0000	229
+		_lcdPrint      		CODE           	0CA0	0000	45
+		_initLCD       		CODE           	0C6E	0000	51
+
+lcd.c estimated size: 554
+
+main.c
 		_sendUART      		CODE           	0CCC	0000	43
 		_initMotor     		CODE           	0D46	0000	7
 		_main          		CODE           	0AE2	0000	163
 		_initUART      		CODE           	0D1E	0000	21
 		_moveMotor     		CODE           	0C1C	0000	83
-		_lcdData       		CODE           	091A	0000	229
-		_lcdPrint      		CODE           	0CA0	0000	45
-		_initLCD       		CODE           	0C6E	0000	51
-		_initKeypad    		CODE           	0D3C	0000	11
 
-main.c estimated size: 1113
+main.c estimated size: 317
 

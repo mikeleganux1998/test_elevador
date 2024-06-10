@@ -29,33 +29,33 @@
 [v ___wmul __wmul `(ui  1 e 2 0 ]
 "15 /opt/microchip/xc8/v1.34/sources/common/Umul32.c
 [v ___lmul __lmul `(ul  1 e 4 0 ]
-"47 /home/miguel/MPLABXProjects/TEST_ELEVADOR.X/main.c
-[v _main main `(v  1 e 0 0 ]
-"77
-[v _initLCD initLCD `(v  1 e 0 0 ]
-"88
-[v _lcdCommand lcdCommand `(v  1 e 0 0 ]
-"108
-[v _lcdData lcdData `(v  1 e 0 0 ]
-"128
-[v _lcdPrint lcdPrint `(v  1 e 0 0 ]
-"135
+"4 /home/miguel/MPLABXProjects/TEST_ELEVADOR.X/keypad.c
 [v _initKeypad initKeypad `(v  1 e 0 0 ]
-"140
+"9
 [v _readKeypad readKeypad `(uc  1 e 1 0 ]
-"162
+"14 /home/miguel/MPLABXProjects/TEST_ELEVADOR.X/lcd.c
+[v _initLCD initLCD `(v  1 e 0 0 ]
+"25
+[v _lcdCommand lcdCommand `(v  1 e 0 0 ]
+"45
+[v _lcdData lcdData `(v  1 e 0 0 ]
+"65
+[v _lcdPrint lcdPrint `(v  1 e 0 0 ]
+"36 /home/miguel/MPLABXProjects/TEST_ELEVADOR.X/main.c
+[v _main main `(v  1 e 0 0 ]
+"66
 [v _initMotor initMotor `(v  1 e 0 0 ]
-"167
+"71
 [v _moveMotor moveMotor `(v  1 e 0 0 ]
-"178
+"82
 [v _initUART initUART `(v  1 e 0 0 ]
-"189
+"93
 [v _sendUART sendUART `(v  1 e 0 0 ]
 "2836 /opt/microchip/xc8/v1.34/include/pic18f4550.h
 [v _PORTC PORTC `VEuc  1 e 1 @3970 ]
 "3627
 [v _LATC LATC `VEuc  1 e 1 @3979 ]
-[s S89 . 1 `uc 1 TRISB0 1 0 :1:0 
+[s S73 . 1 `uc 1 TRISB0 1 0 :1:0 
 `uc 1 TRISB1 1 0 :1:1 
 `uc 1 TRISB2 1 0 :1:2 
 `uc 1 TRISB3 1 0 :1:3 
@@ -65,7 +65,7 @@
 `uc 1 TRISB7 1 0 :1:7 
 ]
 "4205
-[s S98 . 1 `uc 1 RB0 1 0 :1:0 
+[s S82 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -74,11 +74,11 @@
 `uc 1 RB6 1 0 :1:6 
 `uc 1 RB7 1 0 :1:7 
 ]
-[u S107 . 1 `S89 1 . 1 0 `S98 1 . 1 0 ]
-[v _TRISBbits TRISBbits `VES107  1 e 1 @3987 ]
+[u S91 . 1 `S73 1 . 1 0 `S82 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES91  1 e 1 @3987 ]
 "4394
 [v _TRISC TRISC `VEuc  1 e 1 @3988 ]
-[s S131 . 1 `uc 1 TRISC0 1 0 :1:0 
+[s S121 . 1 `uc 1 TRISC0 1 0 :1:0 
 `uc 1 TRISC1 1 0 :1:1 
 `uc 1 TRISC2 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
@@ -86,21 +86,21 @@
 `uc 1 TRISC7 1 0 :1:7 
 ]
 "4426
-[s S138 . 1 `uc 1 RC0 1 0 :1:0 
+[s S128 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 . 1 0 :3:3 
 `uc 1 RC6 1 0 :1:6 
 `uc 1 RC7 1 0 :1:7 
 ]
-[s S145 . 1 `uc 1 . 1 0 :3:0 
+[s S135 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 TRISC3 1 0 :1:3 
 ]
-[u S148 . 1 `S131 1 . 1 0 `S138 1 . 1 0 `S145 1 . 1 0 ]
-[v _TRISCbits TRISCbits `VES148  1 e 1 @3988 ]
+[u S138 . 1 `S121 1 . 1 0 `S128 1 . 1 0 `S135 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES138  1 e 1 @3988 ]
 "4565
 [v _TRISD TRISD `VEuc  1 e 1 @3989 ]
-[s S258 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S248 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -110,23 +110,23 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "5543
-[s S267 . 1 `uc 1 . 1 0 :3:0 
+[s S257 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 ADEN 1 0 :1:3 
 ]
-[s S270 . 1 `uc 1 . 1 0 :5:0 
+[s S260 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 SRENA 1 0 :1:5 
 ]
-[s S273 . 1 `uc 1 . 1 0 :6:0 
+[s S263 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[s S276 . 1 `uc 1 . 1 0 :6:0 
+[s S266 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S279 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S269 . 1 `uc 1 RCD8 1 0 :1:0 
 ]
-[u S281 . 1 `S258 1 . 1 0 `S267 1 . 1 0 `S270 1 . 1 0 `S273 1 . 1 0 `S276 1 . 1 0 `S279 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES281  1 e 1 @4011 ]
-[s S171 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S271 . 1 `S248 1 . 1 0 `S257 1 . 1 0 `S260 1 . 1 0 `S263 1 . 1 0 `S266 1 . 1 0 `S269 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES271  1 e 1 @4011 ]
+[s S161 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -136,36 +136,36 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "5771
-[s S180 . 1 `uc 1 . 1 0 :2:0 
+[s S170 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 BRGH1 1 0 :1:2 
 ]
-[s S183 . 1 `uc 1 . 1 0 :7:0 
+[s S173 . 1 `uc 1 . 1 0 :7:0 
 `uc 1 CSRC1 1 0 :1:7 
 ]
-[s S186 . 1 `uc 1 . 1 0 :3:0 
+[s S176 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 SENDB1 1 0 :1:3 
 ]
-[s S189 . 1 `uc 1 . 1 0 :4:0 
+[s S179 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 SYNC1 1 0 :1:4 
 ]
-[s S192 . 1 `uc 1 . 1 0 :1:0 
+[s S182 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 TRMT1 1 0 :1:1 
 ]
-[s S195 . 1 `uc 1 . 1 0 :6:0 
+[s S185 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX91 1 0 :1:6 
 ]
-[s S198 . 1 `uc 1 TX9D1 1 0 :1:0 
+[s S188 . 1 `uc 1 TX9D1 1 0 :1:0 
 ]
-[s S200 . 1 `uc 1 . 1 0 :5:0 
+[s S190 . 1 `uc 1 . 1 0 :5:0 
 `uc 1 TXEN1 1 0 :1:5 
 ]
-[s S203 . 1 `uc 1 . 1 0 :6:0 
+[s S193 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[s S206 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S196 . 1 `uc 1 TXD8 1 0 :1:0 
 ]
-[u S208 . 1 `S171 1 . 1 0 `S180 1 . 1 0 `S183 1 . 1 0 `S186 1 . 1 0 `S189 1 . 1 0 `S192 1 . 1 0 `S195 1 . 1 0 `S198 1 . 1 0 `S200 1 . 1 0 `S203 1 . 1 0 `S206 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES208  1 e 1 @4012 ]
+[u S198 . 1 `S161 1 . 1 0 `S170 1 . 1 0 `S173 1 . 1 0 `S176 1 . 1 0 `S179 1 . 1 0 `S182 1 . 1 0 `S185 1 . 1 0 `S188 1 . 1 0 `S190 1 . 1 0 `S193 1 . 1 0 `S196 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES198  1 e 1 @4012 ]
 "6008
 [v _TXREG TXREG `VEuc  1 e 1 @4013 ]
 "6030
@@ -186,16 +186,16 @@
 [v _LATD4 LATD4 `VEb  1 e 0 @31844 ]
 "10225
 [v _LATD5 LATD5 `VEb  1 e 0 @31845 ]
-"47 /home/miguel/MPLABXProjects/TEST_ELEVADOR.X/main.c
+"36 /home/miguel/MPLABXProjects/TEST_ELEVADOR.X/main.c
 [v _main main `(v  1 e 0 0 ]
 {
-"65
+"54
 [v main@msg msg `[16]uc  1 a 16 24 ]
-"70
+"59
 [v main@level level `i  1 a 2 40 ]
-"57
+"46
 [v main@key key `uc  1 a 1 42 ]
-"74
+"63
 } 0
 "492 /opt/microchip/xc8/v1.34/sources/common/doprnt.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
@@ -211,76 +211,76 @@
 [v sprintf@f f `*.25Cuc  1 p 2 2 ]
 "1541
 } 0
-"189 /home/miguel/MPLABXProjects/TEST_ELEVADOR.X/main.c
+"93 /home/miguel/MPLABXProjects/TEST_ELEVADOR.X/main.c
 [v _sendUART sendUART `(v  1 e 0 0 ]
 {
-[v sendUART@data data `*.39uc  1 p 2 0 ]
-"194
+[v sendUART@data data `*.39Cuc  1 p 2 0 ]
+"98
 } 0
-"140
+"9 /home/miguel/MPLABXProjects/TEST_ELEVADOR.X/keypad.c
 [v _readKeypad readKeypad `(uc  1 e 1 0 ]
 {
-"152
+"21
 [v readKeypad@row row `i  1 a 2 22 ]
-"148
+"17
 [v readKeypad@col col `i  1 a 2 20 ]
-"141
+"10
 [v readKeypad@keymap keymap `C[4][4]uc  1 a 16 4 ]
-"140
-[v readKeypad@F4542 F4542 `C[4][4]uc  1 s 16 F4542 ]
-"159
+"9
+[v readKeypad@F4443 F4443 `C[4][4]uc  1 s 16 F4443 ]
+"28
 } 0
-"167
+"71 /home/miguel/MPLABXProjects/TEST_ELEVADOR.X/main.c
 [v _moveMotor moveMotor `(v  1 e 0 0 ]
 {
-"169
+"73
 [v moveMotor@i i `i  1 a 2 11 ]
-"167
+"71
 [v moveMotor@steps steps `i  1 p 2 6 ]
 [v moveMotor@direction direction `i  1 p 2 8 ]
-"175
+"79
 } 0
-"128
+"65 /home/miguel/MPLABXProjects/TEST_ELEVADOR.X/lcd.c
 [v _lcdPrint lcdPrint `(v  1 e 0 0 ]
 {
 [v lcdPrint@str str `*.25Cuc  1 p 2 3 ]
-"132
+"69
 } 0
-"108
+"45
 [v _lcdData lcdData `(v  1 e 0 0 ]
 {
 [v lcdData@data data `uc  1 a 1 wreg ]
 [v lcdData@data data `uc  1 a 1 wreg ]
 [v lcdData@data data `uc  1 a 1 2 ]
-"126
+"63
 } 0
-"178
+"82 /home/miguel/MPLABXProjects/TEST_ELEVADOR.X/main.c
 [v _initUART initUART `(v  1 e 0 0 ]
 {
-"187
+"91
 } 0
-"162
+"66
 [v _initMotor initMotor `(v  1 e 0 0 ]
 {
-"165
+"69
 } 0
-"77
+"14 /home/miguel/MPLABXProjects/TEST_ELEVADOR.X/lcd.c
 [v _initLCD initLCD `(v  1 e 0 0 ]
 {
-"86
+"23
 } 0
-"88
+"25
 [v _lcdCommand lcdCommand `(v  1 e 0 0 ]
 {
 [v lcdCommand@cmd cmd `uc  1 a 1 wreg ]
 [v lcdCommand@cmd cmd `uc  1 a 1 wreg ]
 [v lcdCommand@cmd cmd `uc  1 a 1 2 ]
-"106
+"43
 } 0
-"135
+"4 /home/miguel/MPLABXProjects/TEST_ELEVADOR.X/keypad.c
 [v _initKeypad initKeypad `(v  1 e 0 0 ]
 {
-"138
+"7
 } 0
 "15 /opt/microchip/xc8/v1.34/sources/common/Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
