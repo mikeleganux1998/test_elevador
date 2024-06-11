@@ -3,8 +3,8 @@
     <type>com.microchip.mplab.nbide.embedded.makeproject</type>
     <configuration>
         <data xmlns="http://www.netbeans.org/ns/make-project/1">
-            <name>TEST_ELEVADOR</name>
-            <creation-uuid>ab1e1fd1-b1cb-4a37-a13e-fa1d0d4c1347</creation-uuid>
+            <name>TESTELEVATOR2</name>
+            <creation-uuid>5ee9748b-8a65-4f35-8da3-3133edd795dc</creation-uuid>
             <make-project-type>0</make-project-type>
             <c-extensions>c</c-extensions>
             <cpp-extensions/>

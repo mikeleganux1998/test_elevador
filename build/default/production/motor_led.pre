@@ -1,5 +1,5 @@
 
-# 1 "main.c"
+# 1 "motor_led.c"
 
 # 26 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\htc.h"
 extern const char __xc8_OPTIM_SPEED;
@@ -5390,89 +5390,44 @@ extern __nonreentrant void _delaywdt(unsigned long);
 #pragma intrinsic(_delay3)
 extern __nonreentrant void _delay3(unsigned char);
 
-# 4 "lcd.h"
-void lcd_init(void);
-void lcd_clear(void);
-void lcd_set_cursor(int row, int col);
-void lcd_write_string(const char* str);
-void lcd_write_char(char c);
-
 # 9 "motor_led.h"
 void init_leds_and_motor(void);
 void step_motor(int steps);
 void display_level(int level);
 
+# 6 "motor_led.c"
+void init_leds_and_motor(void) {
+TRISD = 0x00;
 
-# 9 "main.c"
-#pragma config FOSC = HSPLL_HS
-#pragma config PLLDIV = 5
-#pragma config CPUDIV = OSC1_PLL2
-#pragma config USBDIV = 2
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
-#pragma config PWRT = ON
-#pragma config BOR = ON
-#pragma config BORV = 3
-#pragma config VREGEN = ON
-#pragma config WDT = OFF
-#pragma config WDTPS = 32768
-#pragma config CCP2MX = ON
-#pragma config PBADEN = OFF
-#pragma config LPT1OSC = OFF
-#pragma config MCLRE = ON
-#pragma config STVREN = ON
-#pragma config LVP = OFF
-#pragma config ICPRT = OFF
-#pragma config XINST = OFF
-#pragma config DEBUG = OFF
-
-# 42
-char read_keypad(void);
-
-void main(void) {
-TRISA = 0x0F;
-TRISB = 0xF0;
-
-lcd_init();
-init_leds_and_motor();
-
-int current_level = 0;
-display_level(current_level);
-
-while (1) {
-char key = read_keypad();
-
-if (key != '\0') {
-int target_level = key - '0';
-
-if (target_level >= 0 && target_level <= 9) {
-int steps = (target_level - current_level) * 100;
-step_motor(steps);
-current_level = target_level;
-display_level(current_level);
-lcd_clear();
-lcd_set_cursor(1, 1);
-lcd_write_string("Nivel: ");
-lcd_write_char(current_level + '0');
+LATD = 0x00;
 }
+
+
+void step_motor(int steps) {
+int direction = (steps > 0) ? 1 : -1;
+if (steps < 0) {
+steps = -steps;
+}
+
+for (int i = 0; i < steps; i++) {
+if (direction > 0) {
+
+LATDbits.LATD0 = 1; LATDbits.LATD1 = 0; LATDbits.LATD2 = 0; LATDbits.LATD3 = 0; _delay((unsigned long)((10)*(8000000/4000.0)));
+LATDbits.LATD0 = 0; LATDbits.LATD1 = 1; LATDbits.LATD2 = 0; LATDbits.LATD3 = 0; _delay((unsigned long)((10)*(8000000/4000.0)));
+LATDbits.LATD0 = 0; LATDbits.LATD1 = 0; LATDbits.LATD2 = 1; LATDbits.LATD3 = 0; _delay((unsigned long)((10)*(8000000/4000.0)));
+LATDbits.LATD0 = 0; LATDbits.LATD1 = 0; LATDbits.LATD2 = 0; LATDbits.LATD3 = 1; _delay((unsigned long)((10)*(8000000/4000.0)));
+} else {
+
+LATDbits.LATD0 = 0; LATDbits.LATD1 = 0; LATDbits.LATD2 = 0; LATDbits.LATD3 = 1; _delay((unsigned long)((10)*(8000000/4000.0)));
+LATDbits.LATD0 = 0; LATDbits.LATD1 = 0; LATDbits.LATD2 = 1; LATDbits.LATD3 = 0; _delay((unsigned long)((10)*(8000000/4000.0)));
+LATDbits.LATD0 = 0; LATDbits.LATD1 = 1; LATDbits.LATD2 = 0; LATDbits.LATD3 = 0; _delay((unsigned long)((10)*(8000000/4000.0)));
+LATDbits.LATD0 = 1; LATDbits.LATD1 = 0; LATDbits.LATD2 = 0; LATDbits.LATD3 = 0; _delay((unsigned long)((10)*(8000000/4000.0)));
 }
 }
 }
 
-char read_keypad(void) {
-char key = '\0';
-for (int col = 0; col < 4; col++) {
-TRISB = 0xF0 | (1 << col);
-LATB = ~(1 << col);
 
-_delay((unsigned long)((20)*(8000000/4000.0)));
+void display_level(int level) {
 
-if (PORTAbits.RA0 == 0) key = '1' + col;
-if (PORTAbits.RA1 == 0) key = '4' + col;
-if (PORTAbits.RA2 == 0) key = '7' + col;
-if (PORTAbits.RA3 == 0) key = '*' + col;
-
-if (key != '\0') break;
-}
-return key;
+LATD = (level & 0x0F);
 }

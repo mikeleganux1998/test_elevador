@@ -3,12 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/miguel/MPLABXProjects/TEST_ELEVADOR.X/keypad.c</file>
-            <file>file:/home/miguel/MPLABXProjects/TEST_ELEVADOR.X/main.c</file>
-            <file>file:/home/miguel/MPLABXProjects/TEST_ELEVADOR.X/newavr-main.c</file>
-            <file>file:/home/miguel/MPLABXProjects/TEST_ELEVADOR.X/lcd.c</file>
-            <file>file:/home/miguel/MPLABXProjects/TEST_ELEVADOR.X/keypad.h</file>
-            <file>file:/home/miguel/MPLABXProjects/TEST_ELEVADOR.X/lcd.h</file>
+            <file>file:/C:/Users/Miguel%20Rosas/Documents/GitHub/test_elevador/motor_led.c</file>
+            <file>file:/C:/Users/Miguel%20Rosas/Documents/GitHub/test_elevador/main.c</file>
+            <file>file:/C:/Users/Miguel%20Rosas/Documents/GitHub/test_elevador/motor_led.h</file>
+            <file>file:/C:/Users/Miguel%20Rosas/Documents/GitHub/test_elevador/common.h</file>
+            <file>file:/C:/Users/Miguel%20Rosas/Documents/GitHub/test_elevador/lcd.h</file>
+            <file>file:/C:/Users/Miguel%20Rosas/Documents/GitHub/test_elevador/lcd.c</file>
         </group>
     </open-files>
 </project-private>

@@ -1,98 +1,90 @@
 #include <xc.h>
-#include <stdio.h>
+#include "common.h"
 #include "lcd.h"
-#include "keypad.h"
+#include "motor_led.h"
 
-// Configuración del PIC18F4550
-#pragma config FOSC = HS
+#define _XTAL_FREQ 8000000  // Frecuencia del oscilador
+
+// Configuración de los fusibles para el PIC18F4550
+#pragma config FOSC = HSPLL_HS
+#pragma config PLLDIV = 5
+#pragma config CPUDIV = OSC1_PLL2
+#pragma config USBDIV = 2
+#pragma config FCMEN = OFF
+#pragma config IESO = OFF
 #pragma config PWRT = ON
 #pragma config BOR = ON
 #pragma config BORV = 3
+#pragma config VREGEN = ON
 #pragma config WDT = OFF
-#pragma config MCLRE = ON
+#pragma config WDTPS = 32768
+#pragma config CCP2MX = ON
 #pragma config PBADEN = OFF
+#pragma config LPT1OSC = OFF
+#pragma config MCLRE = ON
+#pragma config STVREN = ON
 #pragma config LVP = OFF
+#pragma config ICPRT = OFF
 #pragma config XINST = OFF
-#pragma config CP0 = OFF
-#pragma config CP1 = OFF
-#pragma config CP2 = OFF
-#pragma config CP3 = OFF
-#pragma config CPB = OFF
-#pragma config CPD = OFF
+#pragma config DEBUG = OFF
 
-#define _XTAL_FREQ 20000000  // Frecuencia del oscilador
-
-// Definición de pines para el motor a pasos
-#define STEP LATB0
-#define DIR LATB1
+// Definiciones para el teclado matricial
+#define ROW1 PORTAbits.RA0
+#define ROW2 PORTAbits.RA1
+#define ROW3 PORTAbits.RA2
+#define ROW4 PORTAbits.RA3
+#define COL1 PORTBbits.RB0
+#define COL2 PORTBbits.RB1
+#define COL3 PORTBbits.RB2
+#define COL4 PORTBbits.RB3
 
 // Prototipos de funciones
-void initMotor(void);
-void moveMotor(int steps, int direction);
-void initUART(void);
-void sendUART(const char* data);
+char read_keypad(void);
 
-// Función principal
 void main(void) {
-    // Inicializaciones
-    initLCD();
-    initKeypad();
-    initMotor();
-    initUART();
+    TRISA = 0x0F;  // RA0-RA3 como entrada (filas del teclado)
+    TRISB = 0xF0;  // RB0-RB3 como salida (columnas del teclado) y RB4-RB7 como entrada (sensores)
+    
+    lcd_init();  // Inicializar el LCD
+    init_leds_and_motor();  // Inicializar LEDs y motor
 
-    lcdPrint("Elevator Ready");
-
+    int current_level = 0;
+    display_level(current_level);  // Mostrar el nivel inicial en LEDs y LCD
+    
     while (1) {
-        char key = readKeypad();
-
+        char key = read_keypad();
+        
         if (key != '\0') {
-            lcdCommand(0x01); // Limpiar pantalla
-            lcdPrint("Nivel: ");
-            lcdData(key);
-
-            // Enviar nivel por UART
-            char msg[16];
-            sprintf(msg, "Nivel: %c\n", key);
-            sendUART(msg);
-
-            // Mover motor a pasos
-            int level = key - '0'; // Convertir carácter a número
-            moveMotor(level * 100, 1); // Ejemplo: 100 pasos por nivel
+            int target_level = key - '0';  // Convertir el carácter a un número
+            
+            if (target_level >= 0 && target_level <= 9) {
+                int steps = (target_level - current_level) * 100;  // Calcular los pasos necesarios, ajusta 100 según tu motor
+                step_motor(steps);  // Mover el motor
+                current_level = target_level;  // Actualizar el nivel actual
+                display_level(current_level);  // Mostrar el nivel actual en los LEDs y LCD
+                lcd_clear();
+                lcd_set_cursor(1, 1);
+                lcd_write_string("Nivel: ");
+                lcd_write_char(current_level + '0');
+            }
         }
     }
 }
 
-// Funciones para el motor a pasos
-void initMotor(void) {
-    TRISBbits.TRISB0 = 0; // Configurar pin STEP como salida
-    TRISBbits.TRISB1 = 0; // Configurar pin DIR como salida
-}
+char read_keypad(void) {
+    char key = '\0';
+    for (int col = 0; col < 4; col++) {
+        TRISB = 0xF0 | (1 << col);
+        LATB = ~(1 << col);
+        
+        __delay_ms(20);  // Pequeño retardo para permitir la estabilización de la señal
 
-void moveMotor(int steps, int direction) {
-    DIR = direction;
-    for (int i = 0; i < steps; i++) {
-        STEP = 1;
-        __delay_ms(1);
-        STEP = 0;
-        __delay_ms(1);
+        if (ROW1 == 0) key = '1' + col;
+        if (ROW2 == 0) key = '4' + col;
+        if (ROW3 == 0) key = '7' + col;
+        if (ROW4 == 0) key = '*' + col;
+
+        if (key != '\0') break;
     }
-}
-
-// Funciones para la UART
-void initUART(void) {
-    TRISCbits.TRISC6 = 1; // Configurar pin TX como entrada
-    TRISCbits.TRISC7 = 1; // Configurar pin RX como entrada
-    SPBRG = 129; // Baud rate 9600 para 20MHz
-    TXSTAbits.BRGH = 1;
-    TXSTAbits.SYNC = 0;
-    RCSTAbits.SPEN = 1;
-    TXSTAbits.TXEN = 1;
-    RCSTAbits.CREN = 1;
-}
-
-void sendUART(const char* data) {
-    while (*data) {
-        while (!TXSTAbits.TRMT); // Esperar a que el registro esté vacío
-        TXREG = *data++;
-    }
+    return key;
 }

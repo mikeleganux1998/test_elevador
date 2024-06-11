@@ -1,59 +1,44 @@
 Version 3.2 HI-TECH Software Intermediate Code
-[p mainexit ]
-"3976 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic18f4550.h
-[v _TRISA `Vuc ~T0 @X0 0 e@3986 ]
-"4173
-[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
-"4 lcd.h
-[v _lcd_init `(v ~T0 @X0 0 ef ]
-"9 motor_led.h
-[v _init_leds_and_motor `(v ~T0 @X0 0 ef ]
-"11
-[v _display_level `(v ~T0 @X0 0 ef1`i ]
-"42 main.c
-[v _read_keypad `(uc ~T0 @X0 0 ef ]
-"10 motor_led.h
-[v _step_motor `(v ~T0 @X0 0 ef1`i ]
-"5 lcd.h
-[v _lcd_clear `(v ~T0 @X0 0 ef ]
-"6
-[v _lcd_set_cursor `(v ~T0 @X0 0 ef2`i`i ]
-"7
-[v _lcd_write_string `(v ~T0 @X0 0 ef1`*Cuc ]
-"8
-[v _lcd_write_char `(v ~T0 @X0 0 ef1`uc ]
-"3495 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic18f4550.h
-[v _LATB `Vuc ~T0 @X0 0 e@3978 ]
+"4565 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic18f4550.h
+[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
+"3742
+[v _LATD `Vuc ~T0 @X0 0 e@3980 ]
+"3748
+[s S272 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S272 . LATD0 LATD1 LATD2 LATD3 LATD4 LATD5 LATD6 LATD7 ]
+"3758
+[s S273 :1 `uc 1 ]
+[n S273 . LD0 ]
+"3761
+[s S274 :1 `uc 1 :1 `uc 1 ]
+[n S274 . . LD1 ]
+"3765
+[s S275 :2 `uc 1 :1 `uc 1 ]
+[n S275 . . LD2 ]
+"3769
+[s S276 :3 `uc 1 :1 `uc 1 ]
+[n S276 . . LD3 ]
+"3773
+[s S277 :4 `uc 1 :1 `uc 1 ]
+[n S277 . . LD4 ]
+"3777
+[s S278 :5 `uc 1 :1 `uc 1 ]
+[n S278 . . LD5 ]
+"3781
+[s S279 :6 `uc 1 :1 `uc 1 ]
+[n S279 . . LD6 ]
+"3785
+[s S280 :7 `uc 1 :1 `uc 1 ]
+[n S280 . . LD7 ]
+"3747
+[u S271 `S272 1 `S273 1 `S274 1 `S275 1 `S276 1 `S277 1 `S278 1 `S279 1 `S280 1 ]
+[n S271 . . . . . . . . . . ]
+"3790
+[v _LATDbits `VS271 ~T0 @X0 0 e@3980 ]
 [v F4428 `(v ~T0 @X0 1 tf1`ul ]
 "161 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic18.h
 [v __delay `JF4428 ~T0 @X0 0 e ]
 [p i __delay ]
-"2577 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic18f4550.h
-[s S193 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S193 . RA0 RA1 RA2 RA3 RA4 RA5 RA6 ]
-"2586
-[s S194 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S194 . AN0 AN1 AN2 AN3 T0CKI AN4 OSC2 ]
-"2595
-[s S195 :2 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S195 . . VREFM VREFP . LVDIN ]
-"2602
-[s S196 :5 `uc 1 :1 `uc 1 ]
-[n S196 . . HLVDIN ]
-"2606
-[s S197 :7 `uc 1 :1 `uc 1 ]
-[n S197 . . RA7 ]
-"2610
-[s S198 :7 `uc 1 :1 `uc 1 ]
-[n S198 . . RJPU ]
-"2614
-[s S199 :1 `uc 1 ]
-[n S199 . ULPWUIN ]
-"2576
-[u S192 `S193 1 `S194 1 `S195 1 `S196 1 `S197 1 `S198 1 `S199 1 ]
-[n S192 . . . . . . . . ]
-"2618
-[v _PORTAbits `VS192 ~T0 @X0 0 e@3968 ]
 [; ;htc.h: 26: extern const char __xc8_OPTIM_SPEED;
 [; ;xc8debug.h: 14: extern void __builtin_software_breakpoint(void);
 [; ;pic18f4550.h: 49: extern volatile unsigned char SPPDATA @ 0xF62;
@@ -4195,215 +4180,150 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;pic18.h: 161: extern __nonreentrant void _delay(unsigned long);
 [; ;pic18.h: 163: extern __nonreentrant void _delaywdt(unsigned long);
 [; ;pic18.h: 165: extern __nonreentrant void _delay3(unsigned char);
-[; ;lcd.h: 4: void lcd_init(void);
-[; ;lcd.h: 5: void lcd_clear(void);
-[; ;lcd.h: 6: void lcd_set_cursor(int row, int col);
-[; ;lcd.h: 7: void lcd_write_string(const char* str);
-[; ;lcd.h: 8: void lcd_write_char(char c);
 [; ;motor_led.h: 9: void init_leds_and_motor(void);
 [; ;motor_led.h: 10: void step_motor(int steps);
 [; ;motor_led.h: 11: void display_level(int level);
-"9 main.c
-[p x FOSC=HSPLL_HS ]
-"10
-[p x PLLDIV=5 ]
-"11
-[p x CPUDIV=OSC1_PLL2 ]
-"12
-[p x USBDIV=2 ]
-"13
-[p x FCMEN=OFF ]
-"14
-[p x IESO=OFF ]
-"15
-[p x PWRT=ON ]
-"16
-[p x BOR=ON ]
-"17
-[p x BORV=3 ]
-"18
-[p x VREGEN=ON ]
-"19
-[p x WDT=OFF ]
-"20
-[p x WDTPS=32768 ]
-"21
-[p x CCP2MX=ON ]
-"22
-[p x PBADEN=OFF ]
-"23
-[p x LPT1OSC=OFF ]
-"24
-[p x MCLRE=ON ]
-"25
-[p x STVREN=ON ]
-"26
-[p x LVP=OFF ]
-"27
-[p x ICPRT=OFF ]
-"28
-[p x XINST=OFF ]
-"29
-[p x DEBUG=OFF ]
-[; ;main.c: 42: char read_keypad(void);
-"44
-[v _main `(v ~T0 @X0 1 ef ]
+"6 motor_led.c
+[v _init_leds_and_motor `(v ~T0 @X0 1 ef ]
 {
-[; ;main.c: 44: void main(void) {
-[e :U _main ]
+[; ;motor_led.c: 6: void init_leds_and_motor(void) {
+[e :U _init_leds_and_motor ]
 [f ]
-[; ;main.c: 45: TRISA = 0x0F;
-"45
-[e = _TRISA -> -> 15 `i `uc ]
-[; ;main.c: 46: TRISB = 0xF0;
-"46
-[e = _TRISB -> -> 240 `i `uc ]
-[; ;main.c: 48: lcd_init();
-"48
-[e ( _lcd_init ..  ]
-[; ;main.c: 49: init_leds_and_motor();
-"49
-[e ( _init_leds_and_motor ..  ]
-"51
-[v _current_level `i ~T0 @X0 1 a ]
-[; ;main.c: 51: int current_level = 0;
-[e = _current_level -> 0 `i ]
-[; ;main.c: 52: display_level(current_level);
-"52
-[e ( _display_level (1 _current_level ]
-[; ;main.c: 54: while (1) {
-"54
-[e :U 559 ]
-{
-"55
-[v _key `uc ~T0 @X0 1 a ]
-[; ;main.c: 55: char key = read_keypad();
-[e = _key ( _read_keypad ..  ]
-[; ;main.c: 57: if (key != '\0') {
-"57
-[e $ ! != -> _key `ui -> 0 `ui 561  ]
-{
-"58
-[v _target_level `i ~T0 @X0 1 a ]
-[; ;main.c: 58: int target_level = key - '0';
-[e = _target_level -> - -> _key `ui -> 48 `ui `i ]
-[; ;main.c: 60: if (target_level >= 0 && target_level <= 9) {
-"60
-[e $ ! && >= _target_level -> 0 `i <= _target_level -> 9 `i 562  ]
-{
-"61
-[v _steps `i ~T0 @X0 1 a ]
-[; ;main.c: 61: int steps = (target_level - current_level) * 100;
-[e = _steps * - _target_level _current_level -> 100 `i ]
-[; ;main.c: 62: step_motor(steps);
-"62
-[e ( _step_motor (1 _steps ]
-[; ;main.c: 63: current_level = target_level;
-"63
-[e = _current_level _target_level ]
-[; ;main.c: 64: display_level(current_level);
-"64
-[e ( _display_level (1 _current_level ]
-[; ;main.c: 65: lcd_clear();
-"65
-[e ( _lcd_clear ..  ]
-[; ;main.c: 66: lcd_set_cursor(1, 1);
-"66
-[e ( _lcd_set_cursor (2 , -> 1 `i -> 1 `i ]
-[; ;main.c: 67: lcd_write_string("Nivel: ");
-"67
-[e ( _lcd_write_string (1 :s 1C ]
-[; ;main.c: 68: lcd_write_char(current_level + '0');
-"68
-[e ( _lcd_write_char (1 -> + -> _current_level `ui -> 48 `ui `uc ]
-"69
-}
-[e :U 562 ]
-"70
-}
-[e :U 561 ]
-"71
-}
-[e :U 558 ]
-"54
-[e $U 559  ]
-[e :U 560 ]
-[; ;main.c: 69: }
-[; ;main.c: 70: }
-[; ;main.c: 71: }
-[; ;main.c: 72: }
-"72
+[; ;motor_led.c: 7: TRISD = 0x00;
+"7
+[e = _TRISD -> -> 0 `i `uc ]
+[; ;motor_led.c: 9: LATD = 0x00;
+"9
+[e = _LATD -> -> 0 `i `uc ]
+[; ;motor_led.c: 10: }
+"10
 [e :UE 557 ]
 }
-"74
-[v _read_keypad `(uc ~T0 @X0 1 ef ]
+"13
+[v _step_motor `(v ~T0 @X0 1 ef1`i ]
 {
-[; ;main.c: 74: char read_keypad(void) {
-[e :U _read_keypad ]
+[; ;motor_led.c: 13: void step_motor(int steps) {
+[e :U _step_motor ]
+[v _steps `i ~T0 @X0 1 r1 ]
 [f ]
-"75
-[v _key `uc ~T0 @X0 1 a ]
-[; ;main.c: 75: char key = '\0';
-[e = _key -> -> 0 `ui `uc ]
-[; ;main.c: 76: for (int col = 0; col < 4; col++) {
-"76
+"14
+[v _direction `i ~T0 @X0 1 a ]
+[; ;motor_led.c: 14: int direction = (steps > 0) ? 1 : -1;
+[e = _direction ? > _steps -> 0 `i : -> 1 `i -U -> 1 `i ]
+[; ;motor_led.c: 15: if (steps < 0) {
+"15
+[e $ ! < _steps -> 0 `i 559  ]
 {
-[v _col `i ~T0 @X0 1 a ]
-[e = _col -> 0 `i ]
-[e $ < _col -> 4 `i 564  ]
+[; ;motor_led.c: 16: steps = -steps;
+"16
+[e = _steps -U _steps ]
+"17
+}
+[e :U 559 ]
+[; ;motor_led.c: 17: }
+[; ;motor_led.c: 19: for (int i = 0; i < steps; i++) {
+"19
+{
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $U 563  ]
+[e :U 560 ]
+{
+[; ;motor_led.c: 20: if (direction > 0) {
+"20
+[e $ ! > _direction -> 0 `i 564  ]
+{
+[; ;motor_led.c: 22: LATDbits.LATD0 = 1; LATDbits.LATD1 = 0; LATDbits.LATD2 = 0; LATDbits.LATD3 = 0; _delay((unsigned long)((10)*(8000000/4000.0)));
+"22
+[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 2 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;motor_led.c: 23: LATDbits.LATD0 = 0; LATDbits.LATD1 = 1; LATDbits.LATD2 = 0; LATDbits.LATD3 = 0; _delay((unsigned long)((10)*(8000000/4000.0)));
+"23
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+[e = . . _LATDbits 0 2 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;motor_led.c: 24: LATDbits.LATD0 = 0; LATDbits.LATD1 = 0; LATDbits.LATD2 = 1; LATDbits.LATD3 = 0; _delay((unsigned long)((10)*(8000000/4000.0)));
+"24
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 2 -> -> 1 `i `uc ]
+[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;motor_led.c: 25: LATDbits.LATD0 = 0; LATDbits.LATD1 = 0; LATDbits.LATD2 = 0; LATDbits.LATD3 = 1; _delay((unsigned long)((10)*(8000000/4000.0)));
+"25
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 2 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"26
+}
+[; ;motor_led.c: 26: } else {
 [e $U 565  ]
 [e :U 564 ]
 {
-[; ;main.c: 77: TRISB = 0xF0 | (1 << col);
-"77
-[e = _TRISB -> | -> 240 `i << -> 1 `i _col `uc ]
-[; ;main.c: 78: LATB = ~(1 << col);
-"78
-[e = _LATB -> ~ << -> 1 `i _col `uc ]
-[; ;main.c: 80: _delay((unsigned long)((20)*(8000000/4000.0)));
-"80
-[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-[; ;main.c: 82: if (PORTAbits.RA0 == 0) key = '1' + col;
-"82
-[e $ ! == -> . . _PORTAbits 0 0 `i -> 0 `i 567  ]
-[e = _key -> + -> 49 `ui -> _col `ui `uc ]
-[e :U 567 ]
-[; ;main.c: 83: if (PORTAbits.RA1 == 0) key = '4' + col;
-"83
-[e $ ! == -> . . _PORTAbits 0 1 `i -> 0 `i 568  ]
-[e = _key -> + -> 52 `ui -> _col `ui `uc ]
-[e :U 568 ]
-[; ;main.c: 84: if (PORTAbits.RA2 == 0) key = '7' + col;
-"84
-[e $ ! == -> . . _PORTAbits 0 2 `i -> 0 `i 569  ]
-[e = _key -> + -> 55 `ui -> _col `ui `uc ]
-[e :U 569 ]
-[; ;main.c: 85: if (PORTAbits.RA3 == 0) key = '*' + col;
-"85
-[e $ ! == -> . . _PORTAbits 0 3 `i -> 0 `i 570  ]
-[e = _key -> + -> 42 `ui -> _col `ui `uc ]
-[e :U 570 ]
-[; ;main.c: 87: if (key != '\0') break;
-"87
-[e $ ! != -> _key `ui -> 0 `ui 571  ]
-[e $U 565  ]
-[e :U 571 ]
-"88
+[; ;motor_led.c: 28: LATDbits.LATD0 = 0; LATDbits.LATD1 = 0; LATDbits.LATD2 = 0; LATDbits.LATD3 = 1; _delay((unsigned long)((10)*(8000000/4000.0)));
+"28
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 2 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 3 -> -> 1 `i `uc ]
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;motor_led.c: 29: LATDbits.LATD0 = 0; LATDbits.LATD1 = 0; LATDbits.LATD2 = 1; LATDbits.LATD3 = 0; _delay((unsigned long)((10)*(8000000/4000.0)));
+"29
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 2 -> -> 1 `i `uc ]
+[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;motor_led.c: 30: LATDbits.LATD0 = 0; LATDbits.LATD1 = 1; LATDbits.LATD2 = 0; LATDbits.LATD3 = 0; _delay((unsigned long)((10)*(8000000/4000.0)));
+"30
+[e = . . _LATDbits 0 0 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 1 -> -> 1 `i `uc ]
+[e = . . _LATDbits 0 2 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+[; ;motor_led.c: 31: LATDbits.LATD0 = 1; LATDbits.LATD1 = 0; LATDbits.LATD2 = 0; LATDbits.LATD3 = 0; _delay((unsigned long)((10)*(8000000/4000.0)));
+"31
+[e = . . _LATDbits 0 0 -> -> 1 `i `uc ]
+[e = . . _LATDbits 0 1 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 2 -> -> 0 `i `uc ]
+[e = . . _LATDbits 0 3 -> -> 0 `i `uc ]
+[e ( __delay (1 -> * -> -> 10 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"32
 }
-"76
-[e ++ _col -> 1 `i ]
-[e $ < _col -> 4 `i 564  ]
 [e :U 565 ]
-"88
+"33
 }
-[; ;main.c: 88: }
-[; ;main.c: 89: return key;
-"89
-[e ) _key ]
-[e $UE 563  ]
-[; ;main.c: 90: }
-"90
-[e :UE 563 ]
+"19
+[e ++ _i -> 1 `i ]
+[e :U 563 ]
+[e $ < _i _steps 560  ]
+[e :U 561 ]
+"33
 }
-[a 1C 78 105 118 101 108 58 32 0 ]
-
+[; ;motor_led.c: 32: }
+[; ;motor_led.c: 33: }
+[; ;motor_led.c: 34: }
+"34
+[e :UE 558 ]
+}
+"37
+[v _display_level `(v ~T0 @X0 1 ef1`i ]
+{
+[; ;motor_led.c: 37: void display_level(int level) {
+[e :U _display_level ]
+[v _level `i ~T0 @X0 1 r1 ]
+[f ]
+[; ;motor_led.c: 39: LATD = (level & 0x0F);
+"39
+[e = _LATD -> & _level -> 15 `i `uc ]
+[; ;motor_led.c: 40: }
+"40
+[e :UE 566 ]
+}

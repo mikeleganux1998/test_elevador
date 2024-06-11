@@ -1,11 +1,10 @@
 #ifndef LCD_H
 #define LCD_H
 
-#define _XTAL_FREQ 20000000  // Frecuencia del oscilador
+void lcd_init(void);
+void lcd_clear(void);
+void lcd_set_cursor(int row, int col);
+void lcd_write_string(const char* str);
+void lcd_write_char(char c);
 
-void initLCD(void);
-void lcdCommand(unsigned char cmd);
-void lcdData(unsigned char data);
-void lcdPrint(const char* str);
-
-#endif
+#endif  // LCD_H

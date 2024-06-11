@@ -1,0 +1,274 @@
+[p LITE_MODE AUTOSTATIC LFSROK EMI_WORD ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 18F4550 ]
+[d frameptr 4065 ]
+"63 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\double.c
+[v ___flpack __flpack `(d  1 e 3 0 ]
+"88 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fladd.c
+[v ___fladd __fladd `(d  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\fldiv.c
+[v ___fldiv __fldiv `(d  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\flmul.c
+[v ___flmul __flmul `(d  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\flsub.c
+[v ___flsub __flsub `(d  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"54 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftdiv.c
+[v ___ftdiv __ftdiv `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"20 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\ftsub.c
+[v ___ftsub __ftsub `(f  1 e 3 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"15 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul32.c
+[v ___lmul __lmul `(ul  1 e 4 0 ]
+"17 C:\Users\Miguel Rosas\MPLABXProjects\TESTELEVATOR2.X\lcd.c
+[v _lcd_init lcd_init `(v  1 e 0 0 ]
+"29
+[v _lcd_clear lcd_clear `(v  1 e 0 0 ]
+"34
+[v _lcd_set_cursor lcd_set_cursor `(v  1 e 0 0 ]
+"44
+[v _lcd_write_string lcd_write_string `(v  1 e 0 0 ]
+"50
+[v _lcd_write_char lcd_write_char `(v  1 e 0 0 ]
+"54
+[v _lcd_command lcd_command `(v  1 e 0 0 ]
+"68
+[v _lcd_data lcd_data `(v  1 e 0 0 ]
+"82
+[v _lcd_strobe lcd_strobe `(v  1 e 0 0 ]
+"43 C:\Users\Miguel Rosas\MPLABXProjects\TESTELEVATOR2.X\main.c
+[v _main main `(v  1 e 0 0 ]
+"73
+[v _read_keypad read_keypad `(uc  1 e 1 0 ]
+"5 C:\Users\Miguel Rosas\MPLABXProjects\TESTELEVATOR2.X\motor_led.c
+[v _init_leds_and_motor init_leds_and_motor `(v  1 e 0 0 ]
+"12
+[v _step_motor step_motor `(v  1 e 0 0 ]
+"36
+[v _display_level display_level `(v  1 e 0 0 ]
+[s S72 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+]
+"2618 C:\Program Files (x86)\Microchip\xc8\v1.34\include\pic18f4550.h
+[s S80 . 1 `uc 1 AN0 1 0 :1:0 
+`uc 1 AN1 1 0 :1:1 
+`uc 1 AN2 1 0 :1:2 
+`uc 1 AN3 1 0 :1:3 
+`uc 1 T0CKI 1 0 :1:4 
+`uc 1 AN4 1 0 :1:5 
+`uc 1 OSC2 1 0 :1:6 
+]
+[s S88 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 VREFM 1 0 :1:2 
+`uc 1 VREFP 1 0 :1:3 
+`uc 1 . 1 0 :1:4 
+`uc 1 LVDIN 1 0 :1:5 
+]
+[s S94 . 1 `uc 1 . 1 0 :5:0 
+`uc 1 HLVDIN 1 0 :1:5 
+]
+[s S97 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 RA7 1 0 :1:7 
+]
+[s S100 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 RJPU 1 0 :1:7 
+]
+[s S103 . 1 `uc 1 ULPWUIN 1 0 :1:0 
+]
+[u S105 . 1 `S72 1 . 1 0 `S80 1 . 1 0 `S88 1 . 1 0 `S94 1 . 1 0 `S97 1 . 1 0 `S100 1 . 1 0 `S103 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES105  1 e 1 @3968 ]
+[s S176 . 1 `uc 1 RC0 1 0 :1:0 
+`uc 1 RC1 1 0 :1:1 
+`uc 1 RC2 1 0 :1:2 
+`uc 1 . 1 0 :1:3 
+`uc 1 RC4 1 0 :1:4 
+`uc 1 RC5 1 0 :1:5 
+`uc 1 RC6 1 0 :1:6 
+`uc 1 RC7 1 0 :1:7 
+]
+"2885
+[s S185 . 1 `uc 1 T1OSO 1 0 :1:0 
+`uc 1 T1OSI 1 0 :1:1 
+`uc 1 CCP1 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 TX 1 0 :1:6 
+`uc 1 RX 1 0 :1:7 
+]
+[s S192 . 1 `uc 1 T13CKI 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 P1A 1 0 :1:2 
+`uc 1 . 1 0 :3:3 
+`uc 1 CK 1 0 :1:6 
+`uc 1 DT 1 0 :1:7 
+]
+[s S199 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 CCP2 1 0 :1:1 
+]
+[s S202 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 PA1 1 0 :1:2 
+]
+[s S205 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 PA2 1 0 :1:1 
+]
+[s S208 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 RC3 1 0 :1:3 
+]
+[u S211 . 1 `S176 1 . 1 0 `S185 1 . 1 0 `S192 1 . 1 0 `S199 1 . 1 0 `S202 1 . 1 0 `S205 1 . 1 0 `S208 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES211  1 e 1 @3970 ]
+[s S286 . 1 `uc 1 RD0 1 0 :1:0 
+`uc 1 RD1 1 0 :1:1 
+`uc 1 RD2 1 0 :1:2 
+`uc 1 RD3 1 0 :1:3 
+`uc 1 RD4 1 0 :1:4 
+`uc 1 RD5 1 0 :1:5 
+`uc 1 RD6 1 0 :1:6 
+`uc 1 RD7 1 0 :1:7 
+]
+"3020
+[s S295 . 1 `uc 1 SPP0 1 0 :1:0 
+`uc 1 SPP1 1 0 :1:1 
+`uc 1 SPP2 1 0 :1:2 
+`uc 1 SPP3 1 0 :1:3 
+`uc 1 SPP4 1 0 :1:4 
+`uc 1 SPP5 1 0 :1:5 
+`uc 1 SPP6 1 0 :1:6 
+`uc 1 SPP7 1 0 :1:7 
+]
+[s S304 . 1 `uc 1 . 1 0 :7:0 
+`uc 1 SS2 1 0 :1:7 
+]
+[u S307 . 1 `S286 1 . 1 0 `S295 1 . 1 0 `S304 1 . 1 0 ]
+[v _PORTDbits PORTDbits `VES307  1 e 1 @3971 ]
+"3495
+[v _LATB LATB `VEuc  1 e 1 @3978 ]
+"3742
+[v _LATD LATD `VEuc  1 e 1 @3980 ]
+"3976
+[v _TRISA TRISA `VEuc  1 e 1 @3986 ]
+"4173
+[v _TRISB TRISB `VEuc  1 e 1 @3987 ]
+"4394
+[v _TRISC TRISC `VEuc  1 e 1 @3988 ]
+"4565
+[v _TRISD TRISD `VEuc  1 e 1 @3989 ]
+"43 C:\Users\Miguel Rosas\MPLABXProjects\TESTELEVATOR2.X\main.c
+[v _main main `(v  1 e 0 0 ]
+{
+"60
+[v main@steps steps `i  1 a 2 11 ]
+"57
+[v main@target_level target_level `i  1 a 2 14 ]
+"54
+[v main@key key `uc  1 a 1 13 ]
+"50
+[v main@current_level current_level `i  1 a 2 16 ]
+"71
+} 0
+"12 C:\Users\Miguel Rosas\MPLABXProjects\TESTELEVATOR2.X\motor_led.c
+[v _step_motor step_motor `(v  1 e 0 0 ]
+{
+"18
+[v step_motor@i i `i  1 a 2 5 ]
+"13
+[v step_motor@direction direction `i  1 a 2 3 ]
+"12
+[v step_motor@steps steps `i  1 p 2 0 ]
+"33
+} 0
+"73 C:\Users\Miguel Rosas\MPLABXProjects\TESTELEVATOR2.X\main.c
+[v _read_keypad read_keypad `(uc  1 e 1 0 ]
+{
+"75
+[v read_keypad@col col `i  1 a 2 3 ]
+"74
+[v read_keypad@key key `uc  1 a 1 2 ]
+"89
+} 0
+"44 C:\Users\Miguel Rosas\MPLABXProjects\TESTELEVATOR2.X\lcd.c
+[v _lcd_write_string lcd_write_string `(v  1 e 0 0 ]
+{
+[v lcd_write_string@str str `*.32Cuc  1 p 2 3 ]
+"48
+} 0
+"50
+[v _lcd_write_char lcd_write_char `(v  1 e 0 0 ]
+{
+[v lcd_write_char@c c `uc  1 a 1 wreg ]
+[v lcd_write_char@c c `uc  1 a 1 wreg ]
+[v lcd_write_char@c c `uc  1 a 1 3 ]
+"52
+} 0
+"68
+[v _lcd_data lcd_data `(v  1 e 0 0 ]
+{
+[v lcd_data@data data `uc  1 a 1 wreg ]
+[v lcd_data@data data `uc  1 a 1 wreg ]
+[v lcd_data@data data `uc  1 a 1 2 ]
+"80
+} 0
+"34
+[v _lcd_set_cursor lcd_set_cursor `(v  1 e 0 0 ]
+{
+"35
+[v lcd_set_cursor@address address `i  1 a 2 7 ]
+"34
+[v lcd_set_cursor@row row `i  1 p 2 3 ]
+[v lcd_set_cursor@col col `i  1 p 2 5 ]
+"42
+} 0
+"17
+[v _lcd_init lcd_init `(v  1 e 0 0 ]
+{
+"27
+} 0
+"29
+[v _lcd_clear lcd_clear `(v  1 e 0 0 ]
+{
+"32
+} 0
+"54
+[v _lcd_command lcd_command `(v  1 e 0 0 ]
+{
+[v lcd_command@cmd cmd `uc  1 a 1 wreg ]
+[v lcd_command@cmd cmd `uc  1 a 1 wreg ]
+[v lcd_command@cmd cmd `uc  1 a 1 2 ]
+"66
+} 0
+"82
+[v _lcd_strobe lcd_strobe `(v  1 e 0 0 ]
+{
+"87
+} 0
+"5 C:\Users\Miguel Rosas\MPLABXProjects\TESTELEVATOR2.X\motor_led.c
+[v _init_leds_and_motor init_leds_and_motor `(v  1 e 0 0 ]
+{
+"9
+} 0
+"36
+[v _display_level display_level `(v  1 e 0 0 ]
+{
+[v display_level@level level `i  1 p 2 0 ]
+"39
+} 0
+"15 C:\Program Files (x86)\Microchip\xc8\v1.34\sources\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 4 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 0 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 2 ]
+"53
+} 0

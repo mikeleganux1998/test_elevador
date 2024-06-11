@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <executable name="dist/default/production/TEST_ELEVADOR.X.production.hex">
+  <executable name="dist/default/production\test_elevador.production.hex">
     <memory name="program">
       <units>bytes</units>
       <length>32768</length>
-      <used>1360</used>
-      <free>31408</free>
+      <used>1458</used>
+      <free>31310</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>2048</length>
-      <used>43</used>
-      <free>2005</free>
+      <used>18</used>
+      <free>2030</free>
     </memory>
   </executable>
 </project>
