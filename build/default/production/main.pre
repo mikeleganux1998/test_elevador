@@ -5402,39 +5402,138 @@ void init_leds_and_motor(void);
 void step_motor(int steps);
 void display_level(int level);
 
+# 8 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\stdio.h"
+typedef int ptrdiff_t;
+typedef unsigned size_t;
+typedef unsigned short wchar_t;
 
-# 9 "main.c"
-#pragma config FOSC = HSPLL_HS
-#pragma config PLLDIV = 5
-#pragma config CPUDIV = OSC1_PLL2
-#pragma config USBDIV = 2
-#pragma config FCMEN = OFF
-#pragma config IESO = OFF
-#pragma config PWRT = ON
-#pragma config BOR = ON
-#pragma config BORV = 3
-#pragma config VREGEN = ON
-#pragma config WDT = OFF
-#pragma config WDTPS = 32768
-#pragma config CCP2MX = ON
-#pragma config PBADEN = OFF
-#pragma config LPT1OSC = OFF
-#pragma config MCLRE = ON
-#pragma config STVREN = ON
-#pragma config LVP = OFF
-#pragma config ICPRT = OFF
-#pragma config XINST = OFF
-#pragma config DEBUG = OFF
+# 7 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\stdarg.h"
+typedef void * va_list[1];
+
+#pragma intrinsic(__va_start)
+extern void * __va_start(void);
+
+#pragma intrinsic(__va_arg)
+extern void * __va_arg(void *, ...);
+
+# 24 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\stdio.h"
+extern int errno;
+
+# 55
+struct __prbuf
+{
+char * ptr;
+void (* func)(char);
+};
+
+# 17 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\conio.h"
+extern int errno;
+
+
+extern void init_uart(void);
+
+extern char getch(void);
+extern char getche(void);
+extern void putch(char);
+extern void ungetch(char);
+
+extern __bit kbhit(void);
+
+# 31
+extern char * cgets(char *);
+extern void cputs(const char *);
+
+# 100 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\stdio.h"
+extern int cprintf(char *, ...);
+#pragma printf_check(cprintf)
+
+
+
+extern int _doprnt(struct __prbuf *, const register char *, register va_list);
+
+
+# 192
+#pragma printf_check(vprintf) const
+#pragma printf_check(vsprintf) const
+
+extern char * gets(char *);
+extern int puts(const char *);
+extern int scanf(const char *, ...) __attribute__((unsupported("scanf() is not supported by this compiler")));
+extern int sscanf(const char *, const char *, ...) __attribute__((unsupported("sscanf() is not supported by this compiler")));
+extern int vprintf(const char *, va_list) __attribute__((unsupported("vprintf() is not supported by this compiler")));
+extern int vsprintf(char *, const char *, va_list) __attribute__((unsupported("vsprintf() is not supported by this compiler")));
+extern int vscanf(const char *, va_list ap) __attribute__((unsupported("vscanf() is not supported by this compiler")));
+extern int vsscanf(const char *, const char *, va_list) __attribute__((unsupported("vsscanf() is not supported by this compiler")));
+
+#pragma printf_check(printf) const
+#pragma printf_check(sprintf) const
+extern int sprintf(char *, const char *, ...);
+extern int printf(const char *, ...);
+
+# 22 "C:\Program Files (x86)\Microchip\xc8\v1.34\include\string.h"
+extern void * memcpy(void *, const void *, size_t);
+extern void * memmove(void *, const void *, size_t);
+extern void * memset(void *, int, size_t);
 
 # 42
-char read_keypad(void);
+extern char * strcat(char *, const char *);
+extern char * strcpy(char *, const char *);
+extern char * strncat(char *, const char *, size_t);
+extern char * strncpy(char *, const char *, size_t);
+extern char * strdup(const char *);
+extern char * strtok(char *, const char *);
+
+
+extern int memcmp(const void *, const void *, size_t);
+extern int strcmp(const char *, const char *);
+extern int stricmp(const char *, const char *);
+extern int strncmp(const char *, const char *, size_t);
+extern int strnicmp(const char *, const char *, size_t);
+extern void * memchr(const void *, int, size_t);
+extern size_t strcspn(const char *, const char *);
+extern char * strpbrk(const char *, const char *);
+extern size_t strspn(const char *, const char *);
+extern char * strstr(const char *, const char *);
+extern char * stristr(const char *, const char *);
+extern char * strerror(int);
+extern size_t strlen(const char *);
+extern char * strchr(const char *, int);
+extern char * strichr(const char *, int);
+extern char * strrchr(const char *, int);
+extern char * strrichr(const char *, int);
+
+# 13 "main.c"
+void init_uart(void);
+
+
+void uart_send_string(const char* str);
+
+char read_keypad(void) {
+char key = '\0';
+for (int col = 0; col < 4; col++) {
+TRISB = 0xF0 | (1 << col);
+LATB = ~(1 << col);
+
+_delay((unsigned long)((20)*(8000000/4000.0)));
+
+if (PORTAbits.RA0 == 0) key = '1' + col - 0;
+if (PORTAbits.RA1 == 0) key = '4' + col - 1;
+if (PORTAbits.RA2 == 0) key = '7' + col - 2;
+if (PORTAbits.RA3 == 0) key = '*' + col - 3;
+
+if (key != '\0') break;
+}
+return key;
+}
 
 void main(void) {
 TRISA = 0x0F;
 TRISB = 0xF0;
+TRISD = 0x00;
 
 lcd_init();
 init_leds_and_motor();
+init_uart();
 
 int current_level = 0;
 display_level(current_level);
@@ -5454,25 +5553,28 @@ lcd_clear();
 lcd_set_cursor(1, 1);
 lcd_write_string("Nivel: ");
 lcd_write_char(current_level + '0');
+
+
+char buffer[20];
+sprintf(buffer, "Nivel: %d\r\n", current_level);
+uart_send_string(buffer);
 }
 }
 }
 }
 
-char read_keypad(void) {
-char key = '\0';
-for (int col = 0; col < 4; col++) {
-TRISB = 0xF0 | (1 << col);
-LATB = ~(1 << col);
 
-_delay((unsigned long)((20)*(8000000/4000.0)));
 
-if (PORTAbits.RA0 == 0) key = '1' + col;
-if (PORTAbits.RA1 == 0) key = '4' + col;
-if (PORTAbits.RA2 == 0) key = '7' + col;
-if (PORTAbits.RA3 == 0) key = '*' + col;
-
-if (key != '\0') break;
+void init_uart(void) {
+SPBRG = ((unsigned int)(8000000/(16UL * 9600) - 1));
+TXSTAbits.BRGH = 1;
+RCSTAbits.SPEN = 1;
+TXSTAbits.TXEN = 1;
 }
-return key;
+
+void uart_send_string(const char* str) {
+while (*str) {
+while (!TXSTAbits.TRMT);
+TXREG = *str++;
+}
 }
